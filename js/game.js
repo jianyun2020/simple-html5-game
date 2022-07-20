@@ -41,7 +41,7 @@ const monster = {
   y: 0,
 };
 
-const monstersCaught = 0;
+let monstersCaught = 0;
 
 // Handle keyboard controls
 const keysDown = {};
@@ -74,19 +74,19 @@ const reset = () => {
 
 // Update game objects
 const update = (modifier) => {
-  if (38 in keysDown) {
+  if ('ArrowUp' in keysDown) {
     // Player holding up
     hero.y -= hero.speed * modifier;
   }
-  if (40 in keysDown) {
+  if ('ArrowDown' in keysDown) {
     // Player holding down
     hero.y += hero.speed * modifier;
   }
-  if (37 in keysDown) {
+  if ('ArrowLeft' in keysDown) {
     // Player holding left
     hero.x -= hero.speed * modifier;
   }
-  if (39 in keysDown) {
+  if ('ArrowRight' in keysDown) {
     // Player holding right
     hero.x += hero.speed * modifier;
   }
@@ -98,7 +98,7 @@ const update = (modifier) => {
     hero.y <= monster.y + 32 &&
     monster.y <= hero.y + 32
   ) {
-    ++monsterCaught;
+    ++monstersCaught;
     reset();
   }
 };
